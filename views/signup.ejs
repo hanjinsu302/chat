@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <%- include('include', {title:'회원가입'}) %>
+    <link rel="stylesheet" href="/static/loginup.css" />
+    <!-- axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+  </head>
+  <body>
+    <div class="loginup-box">
+      <header>
+        <h4>Join the membership</h4>
+      </header>
+
+      <form name="form_register">
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="userid">이름</span>
+          <input
+            type="text"
+            name="userid"
+            class="form-control"
+            aria-label="name input"
+            aria-describedby="id"
+            required
+          />
+        </div>
+        <!--아이디-->
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="name">아이디</span>
+          <input
+            type="text"
+            name="name"
+            class="form-control"
+            aria-label="userid input"
+            aria-describedby="userid"
+            required
+          />
+        </div>
+        <!--비번-->
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="pw">비번</span>
+          <input
+            type="password"
+            name="pw"
+            class="form-control"
+            aria-label="pw input"
+            aria-describedby="pw"
+            required
+          />
+        </div>
+        <h2 style="color: white; font-size: 30px">우리의 회원이 되겠습니까?</h2>
+        <button
+          type="button"
+          style="
+            background-image: url(https://thumbs.dreamstime.com/b/man-saying-ok-pop-art-style-vector-illustration-man-saying-ok-pop-art-style-vector-sign-symbol-illustration-184701382.jpg);
+            background-size: 250px;
+            width: 250px;
+            height: 200px;
+            border-radius: 10px;
+          "
+          onclick="register();"
+        ></button>
+      </form>
+    </div>
+
+    <script>
+      function register() {
+        const form = document.forms["form_register"];
+        //input에 값을 입력하지 않았을 때
+        if (!form.checkValidity()) {
+          //오류메세지를 보여주지는 않음
+          form.reportValidity(); // 오류 메세지를 보여주지만 서식 전송을 하지 않음
+          return;
+        }
+
+        axios({
+          method: "POST",
+          url: "/user/signup",
+          data: {
+            userid: form.userid.value,
+            pw: form.pw.value,
+            name: form.name.value,
+          },
+        })
+          .then((res) => {
+            return res.data;
+          })
+          .then((data) => {
+            console.log("create >> ", data);
+            // (1) alert 띄우기
+            alert("회원가입 성공");
+            // (2) 가입 성공시 로그인 페이지로 이동
+            // document.location.href란?
+            // javascript에서 페이지 이동할 수 있는 방법
+            // document 객체를 사용하기 때문에 프론트에서 사용 가능
+            document.location.href = "/user/signin";
+          });
+      }
+    </script>
+  </body>
+</html>

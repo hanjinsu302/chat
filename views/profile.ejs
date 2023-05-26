@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <%- include('include', {title:'채팅'}) %>
+    <script
+      src="https://cdn.socket.io/4.6.0/socket.io.min.js"
+      integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+"
+      crossorigin="anonymous"
+    ></script>
+
+    <link rel="stylesheet" href="/static/index.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <!-- axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+    <header>
+      <div class="container">
+        <h1>CHAT - CODINGON</h1>
+        <h2>재치있는 닉네임으로 자신을 소개해보세요!!</h2>
+        <div class="entry-box">
+          <input type="text" id="nickname" placeholder="Nickname" autofocus style="background-color: #1b62b9; border-radius: 30px; width: 200px; height: 60px; font-size: 20px; color: white; font-style: italic;"/>
+          <button type="button" onclick="entry();" onkeypress="if(window.event.keyCode==13){entry()}" style="background-color: #e63838; border-radius: 30px; width: 200px; height: 60px;" >
+            <h4 style="font-size: 30px;
+            position: relative;
+            margin-top: 13px;
+            padding: 0 0 1rem;
+            color: var(--color-white);
+            font-style: italic;
+            letter-spacing: -0.05em;
+            white-space: pre-wrap;">입장하기</h4>
+          </button>
+        </div>
+        <br>
+        <br>
+        <br>
+    
+        <div class="chat-box d-none">
+          <div id="chat-list" class="chat-list" >
+            
+          </div>
+          <br>
+          <select id="nick-list" style="background-color: #ff8400; border-radius: 30px; width: 200px; height: 60px; font-size: 20px; color: white; font-style: italic; text-align: center;"></select
+          >
+         
+         
+          <input type="text" id="message" placeholder="전송할 내용을 입력하세요" autofocus onkeypress="if(window.event.keyCode==13){send()}" style="background-color: #d1d0cb; border-radius: 30px; width: 550px; height: 60px; font-size: 20px; color: white; font-style: italic;"/>
+          <button type="button" onclick="send();" style="background-color: #a22929; border-radius: 30px; width: 200px; height: 60px;" >
+            <h4 style="font-size: 30px;
+            position: relative;
+            margin-top: 13px;
+            padding: 0 0 1rem;
+            color: var(--color-white);
+            font-style: italic;
+            letter-spacing: -0.05em;
+            white-space: pre-wrap;">전송하기</h4>
+          </button>
+          <br>
+          <br>
+          <a href="/" class="link-github" 
+        ><span
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 32 32"
+            aria-hidden="true"
+            focusable="false"
+            
+          >
+            <path
+              d="M32 12.408l-11.056-1.607-4.944-10.018-4.944 10.018-11.056 1.607 8 7.798-1.889 11.011 9.889-5.199 9.889 5.199-1.889-11.011 8-7.798z"
+            ></path>
+          </svg>
+        </span>
+        퇴장하기</a>
+      </div>
+      <blockquote>
+        <p>
+          <strong>채팅 주의 사항</strong> 
+          <a> 개인정보를 공유하지 말아주세요!</a>
+          <br>
+          <a>부적절한 닉네임을 사용하지 말아주세요!</a>
+          <br>
+          <a>확인 되지 않은 사실을 공유 하지 말아주세요!</a>
+          <br>
+          <a>근거 없는 비판과 비난을 하지 말아주세요!</a>
+        </p>
+        
+       
+      </blockquote>
+
+    <footer class="page-footer"></footer>
+
+    <script src="/static/index.js"></script>
+  </body>
+</html>
