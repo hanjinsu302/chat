@@ -3,7 +3,7 @@ const app = express();
 const cookieParser = require("cookie-parser");
 const http = require("http").Server(app); //socket 기본설정
 const io = require("socket.io")(http);
-const PORT = 8000;
+const PORT = 8080;
 
 app.set("view engine", "ejs");
 app.use("/views", express.static(__dirname + "/views"));
