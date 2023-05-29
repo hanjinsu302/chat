@@ -3,11 +3,11 @@
 SHOW databases;
 
 -- 데이터베이스 선택
-USE codingon;
+USE condingon;
 
 -- [DDL]
 -- 테이블 생성
-DROP TABLE visitor;
+DROP TABLE visitor\;
 CREATE TABLE visitor (
   id INT NOT NULL PRIMARY KEY auto_increment,
   name VARCHAR(10) NOT NULL,
@@ -28,3 +28,14 @@ INSERT INTO visitor (name, comment) VALUES("홍길동", "내가 왔다.");
 INSERT INTO visitor (name, comment) VALUES("이찬혁", "으라차차");
 
 SELECT * FROM user;
+
+
+DROP TABLE user;
+CREATE TABLE user (
+  id INT NOT NULL PRIMARY KEY auto_increment,
+  name VARCHAR(10) NOT NULL,
+  comment MEDIUMTEXT
+);
+
+-- 테이블 구조 확인
+DESC user;
